@@ -1,0 +1,44 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Skin Analysis</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            margin: 2em;
+        }
+        .container {
+            max-width: 500px;
+            margin: 0 auto;
+        }
+        .result {
+            margin-top: 2em;
+        }
+        img {
+            max-width: 100%;
+            margin-top: 1em;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Skin Analysis</h1>
+        <form method=post enctype=multipart/form-data>
+            <input type=file name=file>
+            <input type=submit value=Upload>
+        </form>
+        {% if filename %}
+            <div class="result">
+                <h2>Results</h2>
+                <p>Uploaded Image:</p>
+                <img src="{{ url_for('static', filename='uploads/' + filename) }}" alt="Uploaded Image">
+                <p>Predicted Melanin Level: {{ melanin }}</p>
+                <p>Predicted Sebum Level: {{ sebum }}</p>
+            </div>
+        {% endif %}
+    </div>
+</body>
+</html>
